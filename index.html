@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="../src/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <script src="main.js" defer></script>
+
+
+    <div id="wrapper">
+        <div id="side-nav">
+            <ul>
+                <li class="home-li-item">
+                    <span class="material-symbols-outlined">home</span>
+                    <p>Home</p>
+                </li>
+                <li class="today-li-item">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <p>Today</p>
+                </li>
+                <li class="project-li-item">
+                    <span class="material-symbols-outlined project-list-toggle">view_cozy</span>
+                    <p class="project-list-toggle">Projects</p>
+                    <ul id="project-list-container">
+                        <li class="add-project">
+                            <span class="material-symbols-outlined">add</span>
+                            <p>Add Project</p>
+                        </li>
+                    </ul>
+                    <form id="project-form" onsubmit="return false">
+                        <div class="input-container">
+                            <input type="text" name="projectName" id="projectName" placeholder="Project Title" required />
+                        </div>
+                        <div class="input-container">
+                            <label for="projectColor">Project Color:</label>
+                            <input type="color" id="projectColor" name="projectColor" value="#a9a9a9">
+                        </div>
+                        <div class="button-container">
+                            <input type="submit" id="projectConfirm" value="Add">
+                            <input type="button" id="projectClose" value="Cancel">
+                        </div>
+                    </form>
+                </li>
+                <li class="add-task">
+                    <span class="material-symbols-outlined">add</span>
+                    <p>Add Task</p>
+                </li>
+            </ul>
+
+        </div>
+
+        <div id="dashboard">
+            <div id="task-list-container">
+                <h1 id="list-title">To do List</h1>
+                <div id="sort-container">
+                    <label>Sort by:</label>
+                    <select name="sortInput" id="sortInput">
+                    <option value="" disabled selected hidden>Choose...</option>
+                    <option value="byDate">Date</option>
+                    <option value="lowToHigh">Priority (Low - High)</option>
+                    <option value="highToLow">Priority (High - Low)</option>
+                    <option value="alpha">Name (A - Z)</option>
+                    <option value="reverseAlpha">Name (Z - A)</option>
+                </select>
+                </div>
+                <form id="task-form" class="overlay-forms" onsubmit="return false">
+                    <div class="input-container">
+                        <label for="taskName">Title:</label>
+                        <input type="text" name="taskName" id="taskName" placeholder="Task Title" required />
+                    </div>
+                    <div class="input-container description-container">
+                        <label for="taskDescription">Description:</label>
+                        <textarea id="taskDescription" name="taskDescription" rows="9" columns="50"></textarea>
+                    </div>
+                    <div class="input-container">
+                        <label for="taskDueDate">Due Date:</label>
+                        <input type="date" name="taskDueDate" id="taskDueDate" required />
+                    </div>
+                    <div class="input-container">
+                        <label for="taskPriority">Priority: <div id="priority-legend" class="priority-box low-background"></div></label>
+                        <select name="taskPriority" id="taskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="taskProject">Project:</label>
+                        <select name="taskProject" id="taskProject">
+                            <option id="defaultOption" value="Home">Home</option>
+                        </select>
+                    </div>
+                    <div class="button-container">
+                        <input type="button" id="taskClose" value="Close">
+                        <input type="submit" id="taskConfirm" value="Add Task">
+                    </div>
+                </form>
+
+                <form id="delete-form" class="overlay-forms">
+                    <p>Are you sure you want to delete?</p>
+                    <div class="button-container">
+                        <input type="button" id="deleteYes" value="Yes">
+                        <input type="button" id="deleteNo" value="No">
+                    </div>
+                </form>
+
+                <ul id="task-list">
+                    <li class="add-task">
+                        <span class="material-symbols-outlined">add</span>
+                        <p>Add Task</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
