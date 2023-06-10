@@ -129,6 +129,13 @@ const Task = (title, description, date, priority, project, color, id) => {
         const dueDate = document.createElement("div");
         dueDate.innerHTML = formattedDate;
         dueDate.classList.add("date-due");
+        let today = new Date().toISOString().slice(0, 10);
+        let compareDate = new Date(date).toISOString().slice(0, 10);
+        if (isAfter(new Date(year, month, day), new Date()) || today === compareDate) {
+            dueDate.classList.remove("date-due-past-due");
+        }else{
+            dueDate.classList.add("date-due-past-due");
+        }
         dueDate.addEventListener("click", toggleDescription);
 
         const edit = document.createElement("span");

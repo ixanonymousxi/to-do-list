@@ -124,7 +124,7 @@ const DashBoard = () => {
         //Checks if task was completed and removes from completed list if so.
         projectList.forEach(project => {
             if (project.getTitle() === "Completed" && project.getList().includes(taskList[taskArrLocation])) {
-                removeFromCompleteList(taskId);
+                removeFromCompleteList(taskId, "delete");
             }
         });
 
@@ -182,12 +182,20 @@ const DashBoard = () => {
                 taskList[taskArrLocation].setCompletion();
                 project.addToList(taskList[taskArrLocation]);
             }
+
+            /*
+            if (project.getTitle() === taskList[taskArrLocation].getProject()){
+                removeTaskFromProject(taskList[taskArrLocation]);
+                window.setTimeout(()=>{displayTasksOnDash(project);}, 500);
+            }
+            */
         });
+
 
         setStorage();
     };
 
-    const removeFromCompleteList = (taskId) => {
+    const removeFromCompleteList = (taskId, remove) => {
         const taskArrLocation = taskList.findIndex(element => element.getId() === taskId);
         const dashboardListTitle = document.querySelector('#list-title').innerHTML;
 
@@ -200,6 +208,14 @@ const DashBoard = () => {
                 }  
             }
         });
+
+        /*
+        if(remove !== "delete"){
+            addTaskToProject(taskList[taskArrLocation]);
+        }
+        */
+        
+        
 
         setStorage();
         
@@ -384,32 +400,18 @@ const DashBoard = () => {
     }
 
     const getStorage = () => {
-        let tempArr = [];
+        projectList = [];
 
         const JSONProjectList = JSON.parse(localStorage.getItem("projectList"));
-
-        JSONProjectList.forEach(project => {
-            const newProject = ProjectList(project[0], project[1]);
-            tempArr.push(newProject);
-        });
-
-        projectList = tempArr;
-
-        tempArr = [];
-
         const JSONTaskList = JSON.parse(localStorage.getItem("taskList"));
 
+        JSONProjectList.forEach(project => {
+            addProject(project[0], project[1]);
+        });
+
         JSONTaskList.forEach(task => {
-            const newTask = Task(task[0], task[1], task[2], task[3], task[4], task[5], task[6]);
-            tempArr.push(newTask);
+            addTask(task[0], task[1], task[2], task[3], task[4], task[5], task[6]);
         });
-
-        taskList = tempArr;
-
-        taskList.forEach(task => {
-            addTask(task.getTitle(), task.getDescription(), task.getDate(), task.getPriority(), task.getProject());
-        });
-
 
         taskId = localStorage.getItem("taskId");
 
@@ -418,10 +420,10 @@ const DashBoard = () => {
 
     if (storageAvailable("localStorage")) {
 
-        if (!localStorage.getItem("taskList")) {
-            setStorage();
-        } else {
+        if (localStorage.getItem("taskList") || localStorage.getItem("projectList")) {
             getStorage();
+        } else {
+            setStorage();
         }
 
     } else {

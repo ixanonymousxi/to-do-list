@@ -23,7 +23,7 @@ const ProjectList = (title, color) => {
     };
 
     const editProject = () => {
-        mainDash.newForm("edit-project", title);
+        mainDash.newForm("edit-project", title, color);
     };
 
     const deleteProject = () => {

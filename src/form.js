@@ -1,7 +1,7 @@
 import {mainDash} from './index';
 
 
-const Form = (type, itemTitle, description, date, priority, project, id) => {
+const Form = (type, itemTitle, descriptionOrProjectColor, date, priority, project, id) => {
 
     let form = document.querySelector("#task-form");
     let title = document.querySelector("#taskName");
@@ -135,7 +135,7 @@ const Form = (type, itemTitle, description, date, priority, project, id) => {
 
         case "edit-task":
             title.value = itemTitle;
-            taskDescription.value = description;
+            taskDescription.value = descriptionOrProjectColor;
             taskDueDate.value = date;
             taskPriority.value = priority;
             taskProject.value = project;
@@ -174,6 +174,7 @@ const Form = (type, itemTitle, description, date, priority, project, id) => {
             form = document.querySelector("#project-form");
             title = document.querySelector("#projectName");
             title.value = itemTitle;
+            projectColor.value = descriptionOrProjectColor;
             confirmButton = document.querySelector("#projectConfirm");
             closeButton = document.querySelector("#projectClose");
 

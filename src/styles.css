@@ -303,6 +303,11 @@ input[type="checkbox"]:disabled {
     text-align: right;
 }
 
+.date-due-past-due {
+    color:red;
+    font-weight: bold;
+}
+
 .description {
     grid-row-start: 2;
     grid-column-start: 3;
@@ -500,6 +505,7 @@ label[for='taskPriority'] {
 #taskConfirm:hover {
     background: white;
     color: #21adb2;
+    border: solid 1px #21adb2;
 }
 
 #taskClose {
@@ -509,6 +515,7 @@ label[for='taskPriority'] {
 #taskClose:hover {
     background: white;
     color: rgb(194 74 127);
+    border: solid 1px rgb(194 74 127);
 }
 
 #projectConfirm {
@@ -519,6 +526,7 @@ label[for='taskPriority'] {
 #projectConfirm:hover {
     background: white;
     color: rgb(194 74 127);
+    border: solid 1px rgb(194 74 127);
 }
 
 #projectClose {
@@ -529,6 +537,7 @@ label[for='taskPriority'] {
 #projectClose:hover {
     background: white;
     color: rgb(194 74 127);
+    border: solid 1px rgb(194 74 127);
 }
 
 #deleteYes {
@@ -538,6 +547,7 @@ label[for='taskPriority'] {
 #deleteYes:hover {
     background: white;
     color: #21adb2;
+    border: solid 1px #21adb2;
 }
 
 #deleteNo {
@@ -547,6 +557,7 @@ label[for='taskPriority'] {
 #deleteNo:hover {
     background: white;
     color: rgb(194 74 127);
+    border: solid 1px rgb(194 74 127);
 }
 
 .material-symbols-outlined {
